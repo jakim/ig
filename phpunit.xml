@@ -8,7 +8,7 @@
     <testsuite name="ig Test Suite">
         <directory>tests</directory>
     </testsuite>
-
+        
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
@@ -18,5 +18,9 @@
     <php>
         <ini name="error_reporting" value="E_ALL" />
     </php>
-
+        
+    <logging>
+      <log type="coverage-clover" target="tmp/coverage.xml"/>
+    </logging>
+        
 </phpunit>
