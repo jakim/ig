@@ -21,6 +21,7 @@ class TextTest extends TestCase
         $this->assertEquals(['instagram'], Text::getUsernames($this->text1));
         $this->assertEquals(['instagram', 'instagram1', 'juba'], Text::getUsernames($this->text2));
         $this->assertEquals(['on', 'olnud', '1500_'], Text::getUsernames($this->text3));
+        $this->assertNull(Text::getUsernames('@'));
     }
 
     public function testGetTags()
@@ -29,6 +30,8 @@ class TextTest extends TestCase
         $this->assertEquals(['natgeo', 'printimis', 'printimis1'], Text::getTags($this->text2));
         $this->assertEquals(['see', 'põhi'], Text::getTags($this->text3));
         $this->assertEquals(['põhi'], Text::getTags($this->text3, 4));
+        $this->assertNull(Text::getTags($this->text3, 6));
+        $this->assertNull(Text::getTags('#'));
     }
 
     protected function setUp()

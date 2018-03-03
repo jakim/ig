@@ -31,7 +31,7 @@ class Text
                 }
             });
 
-            return array_values(array_unique($tags));
+            return array_values(array_unique($tags))?:null;
         }
 
         return null;
