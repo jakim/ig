@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/jakim/ig.svg?branch=master)](https://travis-ci.org/jakim/ig)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0f7c7e0cd26f05b6b582/maintainability)](https://codeclimate.com/github/jakim/ig/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0f7c7e0cd26f05b6b582/test_coverage)](https://codeclimate.com/github/jakim/ig/test_coverage)
+
 # ig
 Public, web api endpoints and content helpers
 # why?
