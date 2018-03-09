@@ -16,4 +16,9 @@ class Url
     {
         return static::$baseUrl . str_replace('{username}', $username, '/{username}/');
     }
+
+    public static function post($shortCode)
+    {
+        return static::$baseUrl . str_replace('{shortcode}', $shortCode, '/p/{shortcode}/');
+    }
 }

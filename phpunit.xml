@@ -18,5 +18,7 @@
     <php>
         <ini name="error_reporting" value="E_ALL" />
     </php>
-
+    <logging>
+      <log type="coverage-clover" target="tmp/coverage.xml"/>
+    </logging>
 </phpunit>
