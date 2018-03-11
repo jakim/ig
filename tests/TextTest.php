@@ -16,6 +16,7 @@ class TextTest extends TestCase
     protected $text2;
     protected $text3;
     protected $text4;
+    protected $text5;
 
     public function testGetUsernames()
     {
@@ -23,6 +24,7 @@ class TextTest extends TestCase
         $this->assertEquals(['instagram', 'instagram1', 'juba'], Text::getUsernames($this->text2));
         $this->assertEquals(['on', 'olnud', '1500_'], Text::getUsernames($this->text3));
         $this->assertNull(Text::getUsernames('@'));
+        $this->assertEquals(['ju_ba'], Text::getUsernames($this->text5));
     }
 
     public function testGetTags()
@@ -46,5 +48,7 @@ class TextTest extends TestCase
         $this->text4 = 'Granne. Rzeka Bug /  Bug - the last wild river? ❤😍💎👍
 #blogger
 #białystoksubiektywnie #przewodnikpodlasie #przyroda #przewodnikpodlaskie #naturephotography #river #wild #landscapelovers #landscape #countryside #polishnature #poland #summer #igerspoland #igerspodlasie #igersbialystok #guide #podlaskieklimaty #podlasie #water #polskajestpiękna #polskawieś #visitpodlasie #naturegram #view #rzeka #easternpoland #nadbugiem #rural';
+        $this->text5 = 'on lihtsalt proovitekst, 
+        proovitekst (@ju_ba) alates 1500.';
     }
 }
