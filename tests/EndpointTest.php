@@ -15,7 +15,7 @@ class EndpointTest extends TestCase
 
     public function testAccountMedia()
     {
-        $url1 = 'https://www.instagram.com/graphql/query/?query_id=17888483320059182&variables=%7B%22id%22%3A%2225025320%22%2C%22first%22%3A12%2C%22after%22%3A%22AQAaIX_jP4RxEgBcvan8A_WUpfLxTl1mU7pfYlvqnqjlZunDgkjf5knStKlf96juxQiGX_BXJm1WF-MsmlrCIrukbmoHmPGZCjSbE3gR1I3_Ow%22%7D';
+        $url1 = 'https://www.instagram.com/graphql/query/?query_hash=472f257a40c653c64c666ce877d59d2b&variables=%7B%22id%22%3A%2225025320%22%2C%22first%22%3A12%2C%22after%22%3A%22AQAaIX_jP4RxEgBcvan8A_WUpfLxTl1mU7pfYlvqnqjlZunDgkjf5knStKlf96juxQiGX_BXJm1WF-MsmlrCIrukbmoHmPGZCjSbE3gR1I3_Ow%22%7D';
         $url2 = Endpoint::accountMedia('25025320', 12, [
             'variables' => [
                 'after' => 'AQAaIX_jP4RxEgBcvan8A_WUpfLxTl1mU7pfYlvqnqjlZunDgkjf5knStKlf96juxQiGX_BXJm1WF-MsmlrCIrukbmoHmPGZCjSbE3gR1I3_Ow',
