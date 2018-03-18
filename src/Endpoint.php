@@ -11,6 +11,7 @@ class Endpoint
 {
     public static $baseUrl = 'https://www.instagram.com';
     public static $accountMediaQueryHash = '472f257a40c653c64c666ce877d59d2b';
+    public static $tagMediaQueryHash = '298b92c8d7cad703f7565aa892ede943';
 
     public static function accountDetails($username, array $params = []): string
     {
@@ -51,6 +52,15 @@ class Endpoint
         $params['__a'] = 1;
 
         return static::createUrl('/explore/tags/{tag}/', $params);
+    }
+
+    public static function tagMedia($tag, int $first = 8, array $params = [])
+    {
+        $params['query_hash'] = static::$tagMediaQueryHash;
+        $params['variables']['tag_name'] = $tag;
+        $params['variables']['first'] = $first;
+
+        return static::createUrl('/graphql/query/', $params);
     }
 
     public static function createUrl($endpoint, array $params = []): string

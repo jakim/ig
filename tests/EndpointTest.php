@@ -12,6 +12,20 @@ use PHPUnit\Framework\TestCase;
 
 class EndpointTest extends TestCase
 {
+    public function testTagMedia()
+    {
+        $url1 = 'https://www.instagram.com/graphql/query/?query_hash=298b92c8d7cad703f7565aa892ede943&variables=%7B%22tag_name%22%3A%22whpblackandwhite%22%2C%22first%22%3A5%2C%22after%22%3A%22AQCTYt9bsojVi8Ok__BJRYDhxz4nNplfgqYvRjhkxvtecTbz97cCLkfiAIioGZ0W5qtO56sQzsov-NK0xW6tZxBCEHnuAT2d1BfveE52lnWyDw%22%7D';
+        $url2 = Endpoint::tagMedia('whpblackandwhite', 5, [
+            'variables' => [
+                'after' => 'AQCTYt9bsojVi8Ok__BJRYDhxz4nNplfgqYvRjhkxvtecTbz97cCLkfiAIioGZ0W5qtO56sQzsov-NK0xW6tZxBCEHnuAT2d1BfveE52lnWyDw',
+            ],
+        ]);
+
+        $url1 = $this->parseGraphqlQueryUrl($url1);
+        $url2 = $this->parseGraphqlQueryUrl($url2);
+
+        $this->assertEquals($url1, $url2);
+    }
 
     public function testAccountMedia()
     {
@@ -22,11 +36,8 @@ class EndpointTest extends TestCase
             ],
         ]);
 
-        $url1 = parse_url($url1);
-        $url1['query'] = json_decode($url1['query'] ?? '{}', true);
-
-        $url2 = parse_url($url2);
-        $url2['query'] = json_decode($url2['query'] ?? '{}', true);
+        $url1 = $this->parseGraphqlQueryUrl($url1);
+        $url2 = $this->parseGraphqlQueryUrl($url2);
 
 
         $this->assertEquals($url1, $url2);
@@ -71,5 +82,15 @@ class EndpointTest extends TestCase
         ]);
 
         $this->assertEquals($url1, $url2);
+    }
+
+    protected function parseGraphqlQueryUrl($url)
+    {
+        $url = parse_url($url);
+        parse_str($url['query'], $query1);
+        $url['query'] = $query1;
+        $url['query']['variables'] = json_decode($url['query']['variables'] ?? '{}', true);
+
+        return $url;
     }
 }
