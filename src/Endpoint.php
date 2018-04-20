@@ -13,6 +13,13 @@ class Endpoint
     public static $accountMediaQueryHash = '472f257a40c653c64c666ce877d59d2b';
     public static $tagMediaQueryHash = '298b92c8d7cad703f7565aa892ede943';
 
+    public static function accountInfo($accountId, array $params = []): string
+    {
+        $params['id'] = $accountId;
+
+        return static::createUrl('https://i.instagram.com/api/v1/users/{id}/info', $params);
+    }
+
     public static function accountDetails($username, array $params = []): string
     {
         $params['username'] = $username;
@@ -81,7 +88,9 @@ class Endpoint
         }
 
         $query = http_build_query($params);
+        $query = $query ? "?{$query}" : '';
+        $baseUrl = substr($endpoint, 0, 4) !== 'http' ? static::$baseUrl : '';
 
-        return static::$baseUrl . $endpoint . ($query ? "?{$query}" : '');
+        return $baseUrl . $endpoint . $query;
     }
 }

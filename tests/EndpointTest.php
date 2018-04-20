@@ -12,6 +12,14 @@ use PHPUnit\Framework\TestCase;
 
 class EndpointTest extends TestCase
 {
+    public function testAccountInfo()
+    {
+        $url1 = 'https://i.instagram.com/api/v1/users/198945880/info';
+        $url2 = Endpoint::accountInfo('198945880');
+
+        $this->assertEquals($url1, $url2);
+    }
+
     public function testTagMedia()
     {
         $url1 = 'https://www.instagram.com/graphql/query/?query_hash=298b92c8d7cad703f7565aa892ede943&variables=%7B%22tag_name%22%3A%22whpblackandwhite%22%2C%22first%22%3A5%2C%22after%22%3A%22AQCTYt9bsojVi8Ok__BJRYDhxz4nNplfgqYvRjhkxvtecTbz97cCLkfiAIioGZ0W5qtO56sQzsov-NK0xW6tZxBCEHnuAT2d1BfveE52lnWyDw%22%7D';
