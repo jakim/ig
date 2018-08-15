@@ -13,3 +13,5 @@ Public, web api endpoints and content helpers
 Because I only need endpoints (and few helpers) not a complicated library with her limitations.
 # installation
 composer require jakim-pj/ig
+# see in action
+[IG Monitoring - Free, self hosted Instagram Analytics and Stats](https://github.com/jakim/ig-monitoring)
