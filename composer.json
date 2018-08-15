@@ -1,7 +1,7 @@
 {
   "name": "jakim-pj/ig",
   "description": "Public, web api endpoints and content helpers",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
     {
@@ -10,7 +10,9 @@
     }
   ],
   "require": {
-    "php": ">=7.1.0"
+    "php": ">=7.1.0",
+    "ext-pcre": "*",
+    "ext-json": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^7"

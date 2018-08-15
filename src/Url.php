@@ -21,4 +21,19 @@ class Url
     {
         return static::$baseUrl . str_replace('{shortcode}', $shortCode, '/p/{shortcode}/');
     }
+
+    public static function location($id, $slug = null)
+    {
+        $url = static::$baseUrl . str_replace('{id}', $id, '/explore/locations/{id}/');
+        if ($slug) {
+            $url .= "{$slug}/";
+        }
+
+        return $url;
+    }
+
+    public static function tag($tag)
+    {
+        return static::$baseUrl . str_replace('{tag}', $tag, '/explore/tags/{tag}/');
+    }
 }
