@@ -20,23 +20,6 @@ class Endpoint
         return static::createUrl('https://i.instagram.com/api/v1/users/{id}/info', $params);
     }
 
-    public static function accountDetails($username, array $params = []): string
-    {
-        $params['username'] = $username;
-        $params['__a'] = 1;
-
-        return static::createUrl('/{username}/', $params);
-    }
-
-    public static function accountMedia($accountId, int $first = 12, array $params = []): string
-    {
-        $params['query_hash'] = static::$accountMediaQueryHash;
-        $params['variables']['id'] = $accountId;
-        $params['variables']['first'] = $first;
-
-        return static::createUrl('/graphql/query/', $params);
-    }
-
     public static function mediaDetails($code, array $params = []): string
     {
         $params['code'] = $code;
@@ -59,15 +42,6 @@ class Endpoint
         $params['__a'] = 1;
 
         return static::createUrl('/explore/tags/{tag}/', $params);
-    }
-
-    public static function tagMedia($tag, int $first = 8, array $params = [])
-    {
-        $params['query_hash'] = static::$tagMediaQueryHash;
-        $params['variables']['tag_name'] = $tag;
-        $params['variables']['first'] = $first;
-
-        return static::createUrl('/graphql/query/', $params);
     }
 
     public static function createUrl($endpoint, array $params = []): string
