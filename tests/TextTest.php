@@ -18,6 +18,7 @@ class TextTest extends TestCase
     protected $text4;
     protected $text5;
     protected $text6;
+    protected $text7;
 
     public function testGetUsernames()
     {
@@ -40,10 +41,16 @@ class TextTest extends TestCase
     }
 
     // https://github.com/jakim/ig/issues/4
-    public function testGetTagsRu()
+    public function testGetTagsCyrillic()
     {
         $this->assertEquals(count((array)Text::getTags($this->text6)), 5);
         $this->assertEquals(['ипсум', 'долор', 'рецтеяуе', 'цонсецтетуер', 'еффициантур'], Text::getTags($this->text6));
+    }
+
+    public function testGetTagsGreek()
+    {
+        $this->assertEquals(count((array)Text::getTags($this->text7)), 5);
+        $this->assertEquals(['λορεμ', 'ιπσθμ', 'σιγνιφερθμqθε', 'εροσ', 'ορατιο'], Text::getTags($this->text7));
     }
 
     protected function setUp()
@@ -59,5 +66,6 @@ class TextTest extends TestCase
         $this->text5 = 'on lihtsalt proovitekst, 
         proovitekst (@ju_ba) alates 1500.';
         $this->text6 = 'Лорем #ипсум#долор амет, еррор путент не усу. Ут нец ипсум латине #рецтеяуе. Ерат симул сенсерит еу про, витае сцрипта #цонсецтетуер хис не. Сед латине ехпетенда ин, еа мел цоррумпит витуперата сцрибентур. Еа муциус граеци нумяуам яуи, мовет сцрипта #еффициантур нец ид, пер ан тантас цонцептам.';
+        $this->text7 = '#Λορεμ #ιπσθμ δολορ σιτ αμετ, ιν μθcιθσ #σιγνιφερθμqθε σεα, σιτ δθισ φθγιτ cθ, εοσ εα #εροσ#ορατιο. Λεγιμθσ cετεροσ cθ ηασ. Δολορεμ επιcθρει προ αδ, μθνδι λεγερε εφφιcιαντθρ ατ ιθσ. Προ ωισι λαβορεσ φθισσετ εθ, ιδ qθοδ ορατιο ρεφερρεντθρ vιξ. Σεδ μοvετ vολθπταρια αν, νιηιλ εξπλιcαρι νο ηισ.';
     }
 }
