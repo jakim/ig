@@ -39,6 +39,7 @@ class TextTest extends TestCase
         $this->assertEquals(count((array)Text::getTags($this->text4)), 30);
     }
 
+    // https://github.com/jakim/ig/issues/4
     public function testGetTagsRu()
     {
         $this->assertEquals(count((array)Text::getTags($this->text6)), 5);
