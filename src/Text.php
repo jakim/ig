@@ -12,7 +12,7 @@ class Text
 {
 
     public static $usernamesPattern = '/(?:@)([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)/i';
-    public static $tagsPattern = '/(?:#)([\p{L}0-9_](?:(?:[\p{L}0-9_]){0,28}(?:[\p{L}0-9_]))?)/i';
+    public static $tagsPattern = '/(?:#)([\p{L}0-9_](?:(?:[\p{L}0-9_]){0,28}(?:[\p{L}0-9_]))?)/ui';
 
     /**
      * @param string $text

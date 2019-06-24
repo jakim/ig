@@ -17,6 +17,7 @@ class TextTest extends TestCase
     protected $text3;
     protected $text4;
     protected $text5;
+    protected $text6;
 
     public function testGetUsernames()
     {
@@ -38,6 +39,12 @@ class TextTest extends TestCase
         $this->assertEquals(count((array)Text::getTags($this->text4)), 30);
     }
 
+    public function testGetTagsRu()
+    {
+        $this->assertEquals(count((array)Text::getTags($this->text6)), 5);
+        $this->assertEquals(['ипсум', 'долор', 'рецтеяуе', 'цонсецтетуер', 'еффициантур'], Text::getTags($this->text6));
+    }
+
     protected function setUp()
     {
         $this->text1 = 'on lihtsalt proovitekst, @insTagram @instagram #natgeo #natgeo printimis- ja ladumistööstuses. 
@@ -50,5 +57,6 @@ class TextTest extends TestCase
 #białystoksubiektywnie #przewodnikpodlasie #przyroda #przewodnikpodlaskie #naturephotography #river #wild #landscapelovers #landscape #countryside #polishnature #poland #summer #igerspoland #igerspodlasie #igersbialystok #guide #podlaskieklimaty #podlasie #water #polskajestpiękna #polskawieś #visitpodlasie #naturegram #view #rzeka #easternpoland #nadbugiem #rural';
         $this->text5 = 'on lihtsalt proovitekst, 
         proovitekst (@ju_ba) alates 1500.';
+        $this->text6 = 'Лорем #ипсум#долор амет, еррор путент не усу. Ут нец ипсум латине #рецтеяуе. Ерат симул сенсерит еу про, витае сцрипта #цонсецтетуер хис не. Сед латине ехпетенда ин, еа мел цоррумпит витуперата сцрибентур. Еа муциус граеци нумяуам яуи, мовет сцрипта #еффициантур нец ид, пер ан тантас цонцептам.';
     }
 }
