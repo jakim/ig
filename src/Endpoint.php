@@ -44,6 +44,18 @@ class Endpoint
         return static::createUrl('/explore/tags/{tag}/', $params);
     }
 
+    public static function tagGraphqlQuery($queryHash, $tagName, $after, $first = null)
+    {
+        return static::createUrl('/graphql/query/', [
+            'query_hash' => $queryHash,
+            'variables' => [
+                'tag_name' => $tagName,
+                'first' => $first?:rand(2, 11),
+                'after' => $after,
+            ],
+        ]);
+    }
+
     public static function createUrl($endpoint, array $params = []): string
     {
         preg_match_all('/{(.+?)}/', $endpoint, $matches);

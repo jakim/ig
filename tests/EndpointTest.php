@@ -35,6 +35,14 @@ class EndpointTest extends TestCase
         $this->assertEquals($url1, $url2);
     }
 
+    public function testTagQraphqlQuery()
+    {
+        $url1 = 'https://www.instagram.com/graphql/query/?query_hash=174a5243287c5f3a7de741089750ab3b&variables=%7B%22tag_name%22%3A%22instagram%22%2C%22first%22%3A4%2C%22after%22%3A%22QVFBa2kzTXZVYXRtbEJoaXh5REloNVYzbFRhcXhKRE1QcExnZFUtOXlQUVRTbHlqY0JjcVdhcmZJS1BrV1BLSUxvb2xhQlNQWHRiZU8zXzdpamFBenVZag%3D%3D%22%7D';
+        $url2 = Endpoint::tagGraphqlQuery('174a5243287c5f3a7de741089750ab3b', 'instagram', 'QVFBa2kzTXZVYXRtbEJoaXh5REloNVYzbFRhcXhKRE1QcExnZFUtOXlQUVRTbHlqY0JjcVdhcmZJS1BrV1BLSUxvb2xhQlNQWHRiZU8zXzdpamFBenVZag==', 4);
+
+        $this->assertEquals($url1, $url2);
+    }
+
     public function testExploreLocations()
     {
         $url1 = 'https://www.instagram.com/explore/locations/300983197/?__a=1';
