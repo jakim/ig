@@ -61,14 +61,4 @@ class EndpointTest extends TestCase
 
         $this->assertEquals($url1, $url2);
     }
-
-    protected function parseGraphqlQueryUrl($url)
-    {
-        $url = parse_url($url);
-        parse_str($url['query'], $query1);
-        $url['query'] = $query1;
-        $url['query']['variables'] = json_decode($url['query']['variables'] ?? '{}', true);
-
-        return $url;
-    }
 }
