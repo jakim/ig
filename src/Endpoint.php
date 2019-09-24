@@ -17,7 +17,7 @@ class Endpoint
     {
         $params['id'] = $accountId;
 
-        return static::createUrl('https://i.instagram.com/api/v1/users/{id}/info', $params);
+        return static::createUrl('https://i.instagram.com/api/v1/users/{id}/info/', $params);
     }
 
     public static function mediaDetails($code, array $params = []): string

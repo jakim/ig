@@ -14,7 +14,7 @@ class EndpointTest extends TestCase
 {
     public function testAccountInfo()
     {
-        $url1 = 'https://i.instagram.com/api/v1/users/198945880/info';
+        $url1 = 'https://i.instagram.com/api/v1/users/198945880/info/';
         $url2 = Endpoint::accountInfo('198945880');
 
         $this->assertEquals($url1, $url2);
