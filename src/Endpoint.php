@@ -10,8 +10,6 @@ namespace jakim\ig;
 class Endpoint
 {
     public static $baseUrl = 'https://www.instagram.com';
-    public static $accountMediaQueryHash = '472f257a40c653c64c666ce877d59d2b';
-    public static $tagMediaQueryHash = '298b92c8d7cad703f7565aa892ede943';
 
     public static function accountInfo($accountId, array $params = []): string
     {
@@ -50,9 +48,28 @@ class Endpoint
             'query_hash' => $queryHash,
             'variables' => [
                 'tag_name' => $tagName,
-                'first' => $first?:rand(2, 11),
+                'first' => $first ?: rand(2, 11),
                 'after' => $after,
             ],
+        ]);
+    }
+
+    public static function followersGraphqlQuery($queryHash, $accountId, $after = null, $first = null)
+    {
+        $variables = [
+            'id' => $accountId,
+            'include_reel' => true,
+            'fetch_mutual' => false,
+            'first' => $first ?: rand(12, 24),
+        ];
+
+        if ($after) {
+            $variables['after'] = $after;
+        }
+
+        return static::createUrl('/graphql/query/', [
+            'query_hash' => $queryHash,
+            'variables' => $variables,
         ]);
     }
 
